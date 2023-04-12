@@ -1,0 +1,30 @@
+
+.intro {
+    display: flex !important;
+    align-items: center;
+    width: 100% !important;
+}
+
+.intro img {
+    min-width: 40%;
+    min-height: 40%;
+}
+
+.tool-bar {
+    background: #fff;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    position: absolute;
+    bottom: 2px;
+    font-size: 0.8em;
+    color: #232323;
+}
+
+.tool-bar img {
+    width: 8% !important;
+    max-width: 40% !important;
+    max-height: 40% !important;
+    margin: 0.4em .2em 0.4em 0.4em !important;
+}

@@ -1,0 +1,322 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>reveal.js</title>
+	<link rel="stylesheet" href="dist/custom-epfl.css">
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/blood.css">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+	<div class="reveal">
+		<div class="tool-bar">
+			<img src="assets/logo.png" alt="epfl slides"><span>x Reveal.JS </span>
+		</div>
+		<div class="slides">
+			<!-- Remove 'intro' class if you don't wan't aligment in a row -->
+			 <section class="intro">
+				<h3>Signoz & Opentelemetry by:</h3>
+				<img src="assets/angie.svg" alt="angie dev frontend">
+				<aside class="notes">
+					Bonjour, bla bla, passer au toc
+				</aside>
+			 </section>
+			<section data-markdown>
+				<textarea data-template  data-auto-animate>
+						### TOC
+						- Instrumentation with Opentelemetry <!-- .element: class="fragment" data-fragment-index="1" -->
+						- Observability with SigNoz <!-- .element: class="fragment" data-fragment-index="2" -->
+						- Go further? How? <!-- .element: class="fragment" data-fragment-index="3" -->
+						<aside class="notes">
+							<ul>
+								<li>C'est quoi, pq et comment </li>
+								<li>C'est quoi, pq, et comment</li>
+								<li>Blocages, explorer d'autres outils ou pousser les features deja parcorous</li>
+							</ul>
+						</aside>
+						---
+						![signozOpen](/assets/instrumentation.png)
+						<aside class="notes">
+							Signoz: OpenSource, fait en GO <br><br>
+							OpenTelemetry: Projet communautaire soutenu par la Cloud Native Computing Foundation (CNCF) 
+							et d'autres organisations du secteur <br>je sais pas en quoi c'est fait mais..
+							C'est conçue pour être facilement extensible et personnalisable afin de s'adapter 
+							aux différents besoins des utilisateurs.
+						</aside>
+						---
+						#### Opentelemetry === Tracing, Metrics, Logs, Alerts and more...
+						__[ Instrumentation ]__  <!-- .element: class="fragment" data-fragment-index="1" -->
+						<aside class="notes">
+							et tout ça on appel: instrumentation, mais c'est quoi ?
+						</aside>
+						---
+						#### What is Instrumentation?
+						L'instrumentation fait référence au processus d'ajout de code à une application pour recolter des données sur ses performances, son comportement et
+						son utilisation.  <!-- .element: class="fragment" data-fragment-index="1" -->
+						<aside class="notes">
+						Ces données peuvent être utilisées pour identifier et diagnostiquer les problèmes et/ou optimiser les performances et <br>
+						C'est possible de faire avec Wiston aussi
+						</aside>
+						---
+						### 🔭 Opentelemetry
+						C'est un ensemble d'outils, d'API et de SDK conçus pour permettre l'observabilité et la surveillance des systèmes distribués. 
+						<aside class="notes">
+							Il fournit un moyen standard d'instrumenter, de générer, de collecter et d'exporter des données de télémétrie à partir de différents types d'applications et de services. <br><br>
+							C'est possible de faire avec Wiston aussi
+						</aside>
+						---
+						##### How and for what can be used it?
+						- Collecter et suivre les mesures de performances (metrics)  <!-- .element: class="fragment" data-fragment-index="1" -->
+						- Temps de réponse  <!-- .element: class="fragment" data-fragment-index="2" -->
+						- Les taux d'erreur et l'utilisation des ressources, sur plusieurs services et applications.  <!-- .element: class="fragment" data-fragment-index="3" -->
+						- Suivre les demandes au fur et à mesure qu'elles transitent par des systèmes distribués nous permettant d'identifier et de diagnostiquer les problèmes qui peuvent survenir à différents points d'applications.  <!-- .element: class="fragment" data-fragment-index="4" -->
+						---
+						### 🔑 The key benefits of using OpenTelemetry:
+						- Standardization  <!-- .element: class="fragment" data-fragment-index="1" -->
+						- Observability <!-- .element: class="fragment" data-fragment-index="2" -->
+						- Debugging  <!-- .element: class="fragment" data-fragment-index="3" -->
+						- Efficiency  <!-- .element: class="fragment" data-fragment-index="4" -->
+						<aside class="notes">
+							<ul>
+								<li>
+									Standardization: OpenTelemetry fournit un moyen standardisé d'instrumenter et de collecter des données de télémétrie dans différents langages de programmation, 
+									cadres et services, ce qui facilite leur intégration et leur utilisation.
+								</li>
+								<li>
+									Observability: OpenTelemetry permet une meilleure observabilité des systèmes distribués en fournissant une vue complète des performances sur plusieurs services. <!-- .element: class="fragment" data-fragment-index="1" -->
+								</li>
+								<li>
+									Debugging: Le traçage OpenTelemetry peut nous aider à identifier la cause première des problèmes en fournissant une vue
+									détaillée de la façon dont les requêtes circulent, on a une tracabilite plus complete ?
+								</li>
+								<li>
+									Efficiency: OpenTelemetry peut réduire les frais/couts généraux associés à la collecte et à l'exportation de télémétrie en utilisant une API 
+									unifiée et en optimisant le transfert et le stockage des données.
+								</li>
+							</ul>
+						</aside>
+						---
+						##### Needed packages 
+						![configuration](/assets/confOpentelemetry.svg) <!-- .element: class="fragment" data-fragment-index="1" -->
+						---
+						##### Configuration 
+						![configuration](/assets/appsopen.svg) <!-- .element: class="fragment" data-fragment-index="4" -->
+						---
+						#### Other tools that allow for Instrumentation (Ex: Winston)
+						bibliothèque(or package for node apps), qui permet de générer des messages sous forme de logs 📊
+						<aside class="notes">
+						-> C'est un moyen simple et flexible de collecter des informations sur les événements ou erreurs d'application. <br><br>
+						Mais...
+						-> Il ne fournit pas de fonctionnalités de suivi automatique ou de collecte de métriques prêtes sauf si on ajout des 
+						plugins pour ajouter des fonctionnalités supplémentaires. 
+						</aside>
+						---
+						### Mais ☝🏼
+						OpenTelemetry peut être utilisé conjointement avec Winston pour fournir une vue plus complète des performances et du comportement des applications. <!-- .element: class="fragment" data-fragment-index="1" -->
+						---
+						## 🔭🙌🏽
+						Which one is better ⁉️
+						<aside class="notes">
+						> Si on'a besoin que d'enregistrer des informations sur les applications et pas besoin de collecter des données de télémétrie supplémentaires,
+						__Winston__ peut suffire
+						<br> <br>
+						> Si il y a besoin de surveiller et de suivre les requests sur plusieurs services et composants d'un système/application, alors __OpenTelemetry__ 
+						peut être un meilleur choix. 
+						</aside>
+						---
+						### Conclusion
+						Les deux ça serait bien pour avoir une observabilité plus complete✌🏼.
+						<aside class="notes">
+						Mais selon moi, je pense qu'un mix des deux, pour collecter des logs et de télémétrie peut fournir une vue plus complète du comportement et des performances des applis.
+						</aside>
+						---
+						#### et encore mieux d'un chagement proche comme le passage de:
+						![micromono](/assets/services.jpeg) <!-- .element: class="fragment" data-fragment-index="1" -->
+						<aside class="notes">
+							si on fait un passage a des infrastructures micros services c'est une bonne solution
+						</aside>
+						---
+						### SigNoz === APM
+						__[ Observability ]__
+						<aside class="notes">
+							Another pratique discipline ou processus ?
+						</aside>
+						---
+						### What is Observability?
+						L'observabilité fait référence à la capacité de comprendre et de debug, en examinant les outputs. 
+						<aside class="notes">
+							Quels sont les outputs ? des logs, des métriques, des traces et d'autres types de données générés par le système pendant le fonctionnement. <br><br>
+							Le but de l'observabilité est de faciliter la compréhension de ce qui se passe à l'intérieur d'un système complexe, afin que les problèmes puissent être rapidement identifiés et résolus.
+						</aside>
+						---
+						### 👀 Signoz
+						SigNoz est une plateforme open-source d'observabilité qui permet de surveiller les performances et "la santé" de leurs applications et
+						de leurs infrastructures. <!-- .element: class="fragment" data-fragment-index="1" -->
+						<aside class="notes">
+							Cette plateforme collecte des données de métriques, des traces et des logs pour offrir une vue complète et en temps réel de "la santé" des applications. <br> <br>
+							Elle dispose d'une interface utilisateur intuitive pour visualiser et analyser les données, ainsi que d'une API pour personnaliser les alertes et les notifications. <br><br>
+							SigNoz est utilisé pour surveiller les applications déployées dans des environnements cloud, conteneurisés et distribués, 
+							et il est compatible avec les technologies courantes telles que Kubernetes, Docker, Jaeger, Prometheus et Elasticsearch.
+						</aside>
+						---
+						### What is APM?
+						__[ Application Performance Monitoring ]__ <!-- .element: class="fragment" data-fragment-index="1" -->
+						<aside class="notes">
+							Pour le web, il s'agit d'une pratique qui permet de mesurer, surveiller et optimiser les performances des applications web. 
+							<br> - Tels que les temps de réponse des pages, la disponibilité du site web, la charge du serveur et la capacité à gérer le trafic élevé.
+						</aside>
+						---
+						## Conclusion
+						<aside class="notes">
+							Les outils d'APM pour le web peuvent aider à identifier les anomalies dans le code, 
+							les requêtes de base de données inefficaces ou lentens et les problèmes de latence de réseau qui peuvent ralentir le temps de réponse des pages web.
+						</aside>
+						---
+						### 🎯 My goal with SigNoz:
+						- Alerts 🚨 <!-- .element: class="fragment" data-fragment-index="1" -->
+						- Metrics 📈<!-- .element: class="fragment" data-fragment-index="2" -->
+						- Logs 📊<!-- .element: class="fragment" data-fragment-index="3" -->
+						- Notifications 🔔<!-- .element: class="fragment" data-fragment-index="4" -->
+						<aside class="notes">
+							goals and more 
+						</aside>
+						---
+						##### 👷🏻‍♀️🛠 What I've done and learned while exploring SigNoz:
+						- Installation with Docker Compose (works on my machine ┐(シ)┌)  <!-- .element: class="fragment" data-fragment-index="1" -->
+						- Configuration of services (Node.js + Angular) <!-- .element: class="fragment" data-fragment-index="2" -->
+						- Trace [GET/POST] GTA_FRONT & GTA_PROXY <!-- .element: class="fragment" data-fragment-index="3" -->
+						- Trace externals URL passing thru OTEL configuration (ex: absences2.epfl.ch) <!-- .element: class="fragment" data-fragment-index="4" -->
+						- Custom Dashboard with Metrics (httpcheck) <!-- .element: class="fragment" data-fragment-index="5" -->
+						- Notify slow or error requests via a Slack bot <!-- .element: class="fragment" data-fragment-index="6" -->
+						- Dev a Makefile  <!-- .element: class="fragment" data-fragment-index="7" -->
+						<aside class="notes">
+							what/why?
+						</aside>
+						---
+						##### Installation en local
+						![containers](/assets/containers.svg)
+						<aside class="notes">
+							Explain what for each container !
+							<ul>
+								<li>Clickhouse:</li>
+								<li>Clickhouse-Alertmanager:</li>
+								<li>Clickhouse-otel-collector:</li>
+								<li>Clichouse-otel-collector-metrics:</li>
+								<li>frontend: UI</li>
+								<li>query-service:</li>
+								<li>zookeper</li>
+							</ul>
+						</aside>
+						---
+						##### Configuration des services
+						![otelconf](/assets/otelconf.svg)
+						<aside class="notes">
+							demo1
+						</aside>
+						---
+						##### Trace [GET/POST] from GTA_FRONT & GTA_PROXY
+						![tracepost](/assets/ssrv.svg)
+						<aside class="notes">
+							demo2
+						</aside>
+						---
+						##### GTA_FRONT: { method=GET }
+						![traceget](/assets/traceget.svg)
+						<aside class="notes">
+							demo3
+						</aside>
+						---
+						##### GTA_PROXY: { method=POST }
+						![tracepost](/assets/tracepost.svg)
+						<aside class="notes">
+							demo4
+						</aside>
+						---
+						##### Trace externals URL passing thru OTEL configuration
+						[ 🔗 absences2.epfl.ch](https://dabsences2.epfl.ch)
+						![trace](/assets/traceevery.svg)
+						<aside class="notes">
+							demo5
+						</aside>
+						---
+						#### Create custom dashboard's
+						![dashboard](/assets/dash1.svg)
+						<aside class="notes">
+							demo6
+						</aside>
+						---
+						#### Custom Dashboard with Metrics
+						![dashboard](/assets/dashboard.svg)
+						<aside class="notes">
+							demo7
+						</aside>
+						---
+						#### Notify slow or error requests via a Slack bot
+						![dashboard](/assets/alert.svg)
+						---
+						![dashboard](/assets/notif.svg)
+						<aside class="notes">
+							demo8
+						</aside>
+						---
+						### Why a Makefile?
+						![dashboard](/assets/noo.gif)  <!-- .element: class="fragment" data-fragment-index="1" -->
+						<aside class="notes">
+							someone told me to docker tag, rename, build and push to registry 
+						</aside>
+						---
+						![makefile](/assets/make.svg)
+						<aside class="notes">
+							demo9
+						</aside>
+						---
+						![makefile](/assets/aftermake.svg)
+						<aside class="notes">
+							demo10
+						</aside>
+						---
+						### 🙅🏻‍♀️ Mes blocage: 
+						- Knowledge in PrometheusQL or how to make good Queries <!-- .element: class="fragment" data-fragment-index="1" -->
+						- Deploy to OpenShift.. <!-- .element: class="fragment" data-fragment-index="2" -->
+						- Insfrastructure, Signoz dashboard per project ? <!-- .element: class="fragment" data-fragment-index="3" -->
+						 	Ex: https://absences2.epfl.ch/monitor <!-- .element: class="fragment" data-fragment-index="4" -->
+						<aside class="notes">
+							explain
+						</aside>
+						---
+						### Contributions/Help?
+						---
+						![gotfurt](/assets/further.svg)
+						<aside class="notes">
+							ask who want to join!
+						</aside>
+						---
+						## :): thanks for your attention
+						 with 🤍 by: ngie-mp
+					</textarea>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script> 
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>
