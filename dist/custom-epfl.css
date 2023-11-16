@@ -9,9 +9,11 @@
     min-width: 40%;
     min-height: 40%;
 }
-
+.tool-bar span {
+    margin-right: 0.5em;
+}
 .tool-bar {
-    background: #fff;
+    background: #f7f7f7;
     width: 100%;
     display: flex;
     align-items: center;
@@ -19,7 +21,9 @@
     position: absolute;
     bottom: 2px;
     font-size: 0.8em;
-    color: #232323;
+    color: #575757;
+    padding: 0.4em .2em 0.4em 0.4em !important;
+    
 }
 
 .tool-bar img {
